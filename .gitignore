@@ -1,0 +1,24 @@
+# Ignorar directorios de salida de compilación
+/bin/
+/obj/
+
+# Ignorar archivos de configuración de usuario
+*.user
+
+# Ignorar archivos de configuración de Visual Studio
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar archivos temporales de compilación
+[Tt]emp/
+[Bb]in/
+[Ll]og/
+
+# Ignorar archivos específicos de Visual Studio
+*.VisualState.xml
+
+# Ignorar el directorio específico
+/EESSSYSTEM/Core/constanst/

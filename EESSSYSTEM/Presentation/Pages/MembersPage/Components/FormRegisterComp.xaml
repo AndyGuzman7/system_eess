@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="EESSSYSTEM.Presentation.Pages.MembersPage.Components.FormRegisterComp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel ="clr-namespace:EESSSYSTEM.Presentation.Pages.MembersPage.Components.MVVM"
+             xmlns:validators="clr-namespace:EESSSYSTEM.Presentation.Pages.MembersPage.Components.Validators" 
+             xmlns:local="clr-namespace:EESSSYSTEM.Core.validation"
+             mc:Ignorable="d" 
+             Width="500"
+            
+              d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <local:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <viewModel:FormRegisterCompViewModel/>
+    </UserControl.DataContext>
+    <Grid Background="White">
+        <Grid Margin="20">
+            <StackPanel>
+                <TextBlock Text="Registro de miembro" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <Label Content="Nombre completo:"/>
+                <TextBox 
+                    Name="txtName"
+                    
+                    Margin="0,0,0,10" 
+                    Padding="5">
+                    <TextBox.Text>
+                        <Binding Path="Name"
+                                 UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validators:NameValidator/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Fecha de nacimiento:"/>
+                <DatePicker 
+                    Name="dpDateBirthDay" 
+                    SelectedDate="{Binding DateBirthDay}"
+                    Margin="0,0,0,10" 
+                    Padding="5"/>
+
+                <Label Content="Genero:"/>
+                <ComboBox 
+                    Name="cbxGender"
+                    ItemsSource="{Binding Genders }"
+                    DisplayMemberPath="Gender"
+                     SelectedItem="{Binding Gender, Mode=TwoWay}"/>
+
+
+                <Label Content="Batismo:"/>
+                <ComboBox 
+                    Name="cbxxBaptims"
+                    ItemsSource="{Binding Baptisms }"
+                    DisplayMemberPath="Baptism"
+                    SelectedItem="{Binding Baptism, Mode=TwoWay}"/>
+
+
+
+                <Label Content="Telefono:"/>
+                <TextBox Name="txtPhone" 
+                         Text="{Binding Phone}"
+                         Margin="0,0,0,10"
+                         Padding="5"/>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+
+                    <Button x:Name="btnCancel"
+                            Content="Cancelar" 
+                            HorizontalAlignment="Center" 
+                            Padding="10,5" 
+                            Margin="0,20,20,0"
+                            Background="White"
+                            Foreground="Black"
+                            Click="btnCancel_Click"
+                            />
+
+                    <Button x:Name="btnRegister"
+        Command="{Binding RegisterCommand}"
+        Content="Registrar nuevo miembro"
+        HorizontalAlignment="Center" 
+        Padding="10,5"
+        
+        Margin="0,20,0,0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=txtName, Path=(Validation.HasError)}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=txtName, Path=(Validation.HasError)}" Value="False">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                    </DataTrigger>
+                                   
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+
+
+
+
+
+
+
+
+                </StackPanel>
+
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

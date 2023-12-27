@@ -1,0 +1,67 @@
+﻿<Window x:Class="EESSSYSTEM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EESSSYSTEM"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" x:Name="gridNav" Height="100" VerticalAlignment="Top" Background="white" >
+            <Grid Height="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="1" >
+                    <Grid>
+                        <Grid Background="#1E2E3B" Opacity="0.7">
+                        </Grid>
+                        <StackPanel>
+                            <Separator Margin=" 5 5 5 5"/>
+                            <Grid Margin="15 0" Grid.Row="0">
+                                <TextBlock x:Name="txbNamePage"  Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="" Foreground="White" >
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="0" Height="50">
+                    <StackPanel  HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Grid Height="50">
+                            <Button x:Name="btnHome" Height="50"   VerticalAlignment="Center" Background="{x:Null}"   BorderBrush="{x:Null}" Margin="0" Padding="0" Click="BtnHome_Click">
+                                <StackPanel Orientation="Vertical" Margin="10">
+                                    <StackPanel Height="auto" Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="home" Margin="0 5 15 5"  Foreground="Black"/>
+                                        <TextBlock  VerticalAlignment="Center" Text="Incio" Foreground="Black"  Margin="5" Height="auto"/>
+                                    </StackPanel>
+                                    
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                        <Grid >
+                            <Button x:Name="btnMembers" Height="50"   VerticalAlignment="Bottom"  Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnMembers_Click" Padding="0"  >
+                                <StackPanel VerticalAlignment="Center" Margin="10">
+                                    <StackPanel Height="auto" Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="AccountGroup" Height="auto" Foreground="Black" Margin="0 5 15 0 "  />
+                                        <TextBlock VerticalAlignment="Center" Text="Miembros" Foreground="Black"  Margin="5" Height="auto"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdMain" Grid.Row="1" Background="#FFF9F9F9">
+            
+        </Grid>
+        </Grid>
+</Window>
